@@ -1,9 +1,15 @@
 Spaceship Pterodactyl;
+Asteroid[] stoned;
 Star [] starfield;
 public void setup() 
 {
 	size(800,800);
 	background(0);
+	stoned = new Asteroid[50];
+	for(int i = 0; i < stoned.length; i++)
+	{
+		stoned[i] = new Asteroid((int)(Math.random()*width), (int)(Math.random()*height), (int)(Math.random()*3)+1);
+	}
 	starfield = new Star[300];
 	for(int i= 0; i < starfield.length; i++)
 	{
@@ -19,6 +25,11 @@ public void draw()
 	for(int i = 0; i < starfield.length; i++)
 	{
 		starfield[i].show();
+	}
+	for(int i = 0; i < stoned.length; i++)
+	{
+		stoned[i].move();
+		stoned[i].show();
 	}
 	Pterodactyl.move();
 	Pterodactyl.show();	
